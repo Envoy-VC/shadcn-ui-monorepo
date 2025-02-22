@@ -43,3 +43,31 @@ Then add this to your web-app `components.json` i.e. `apps/web/components.json`:
 ```
 
 You can change tha path aliases to whatever you want in `tsconfig.json`, but make sure to update the `ui` alias to point to the correct path.
+
+Then create a new file at `apps/web/postcss.config.mjs` with the following content:
+
+```js
+export { default } from "@repo/ui/postcss.config";
+```
+
+Also make sure to import the `globals.css` file in your entrypoint, e.g. `apps/web/src/app/layout.tsx`:
+
+```tsx
+import type { ReactNode } from 'react';
+
+import "@repo/ui/globals.css" // Add this line
+
+const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
+  return (
+    <html lang='en'>
+      <body>
+        {children}
+      </body>
+    </html>
+  );
+};
+
+export default RootLayout;
+```
+
+---
