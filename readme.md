@@ -70,4 +70,17 @@ const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
 export default RootLayout;
 ```
 
+Add this to your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@repo/ui/*": ["./packages/ui/src/*"]
+    }
+  }
+}
+```
+
 ---
